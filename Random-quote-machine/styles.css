@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main, section, article, aside, footer, header, nav {
+   display: block;
+}
+body{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1a4557;
+  background-image: url(linus.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.container{
+  display: flex;
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  flex-direction: row;
+  align-items: flex-start;
+}
+span{
+  background-color: #EDDDD4;
+  border-radius: 10px;
+  width: 65vw;
+  margin: 5px;
+  padding: 10px;
+  box-shadow: 0px 13px 30px -12px rgba(0,0,0,0.8);
+}
+p.text{
+  text-align: left;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+}
+p.signature{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 10px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+.buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+button{
+  margin: 5px;
+  width: 60px;
+  height: 30px;
+  font-size: 10px;
+  font-family: 'Roboto Mono', monospace;
+  align-self: center;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  background-color: #C44536;
+  box-shadow: 0px 13px 30px -12px black;
+  outline: none;
+}
+button:hover{
+  background-color: #F44536;
+  transform: translateY(-1px);
+}
+@media only screen and (min-width:321px) and (max-width:500px){
+  p.text{font-size: 16px;}
+  p.signature{font-size: 16px;}
+  button{font-size: 12px;height: 35px;}
+}
+@media only screen and (min-width:501px){
+  p.text{font-size: 18px;}
+  p.signature{font-size: 18px;}
+  button{font-size: 14px;height: 40px; width: 90px;}
+  .buttons{flex-direction: row;}
+  .container{flex-direction: column;align-items: center;}
+  span{width: 45vw;}
+}
