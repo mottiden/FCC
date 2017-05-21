@@ -3,53 +3,69 @@ function getForecasts(position) {
 	const latitude  = position.coords.latitude;
 	const longitude = position.coords.longitude;
 	const place = [latitude, longitude];
-	console.log(place);
+	const location = [];
 
 	// calling google maps API for name city
 	
 	const googleMaps = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}`;
+	// fetch(googleMaps)
+	// 	.then(response => response.json())
+	// 	.then(data => location.push(data));
+
 	// calling dark-sky API using Fetch
 	
 	const darkSky = `https://crossorigin.me/https://api.darksky.net/forecast/${key}/${latitude},${longitude}?data=auto`;
-
-	// fetching data
-	fetch(darkSky)
-		.then(response => response.json())
-		.then(data => parseForecasts(data))
-	 	.then(parsed => visualizeForecasts(parsed));
+	// fetch(darkSky)
+	// 	.then(response => response.json())
+	// 	.then(data => parseForecasts(data))
+	//  	.then(parsed => visualizeForecasts(parsed, location));
 }
 
 
 // taking only important data
 function parseForecasts(json){
 	const data = {};
+	const days = {0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat"};
+
 	data.currently = json.currently;//actual weather conditions
 	data.hourly = json.hourly;		//weather for the next 48h
-	data.hourly.data = data.hourly.data.splice(0,24); // taking only the first 24h
+	data.hourly.data = data.hourly.data.splice(1,25); // taking only the first 24h
 	data.daily = json.daily;		//week weather conditions
 
-	// add time conversions
-	// convert percentage 
+	// parsing hourly
+	data.hourly.data.map(el => {
+		el.time = new Date(el.time*1000).getHours();
+		el.precipProbability = Math.round(el.precipProbability*100);
+	});
 
+	// parsing daily
+	data.daily.data.map(el => {
+		el.time = days[new Date(el.time*1000).getDay()];
+		el.precipProbability = Math.round(el.precipProbability*100);
+	});
+
+	// parsing currently
+	data.currently.precipProbability = Math.round(data.currently.precipProbability*100);
+	data.currently.humidity = Math.round(data.currently.humidity*100);
+	data.currently.time = new Date(data.currently.time*1000).toDateString();
+	
 	return data;
 }
 
 
-function visualizeForecasts(d){
-	// select elements you want data to be visualized
-	const currently = [...document.querySelectorAll("span[data-currently]")];
-	const hourly = document.querySelector("ul.hourly");
-	const daily = document.querySelector("ul.daily");
+function visualizeForecasts(d,l){
 	const dailyContent = [];
 	const hourlyContent = [];
 	
+	location.innerHTML = l[0].results[4].formatted_address;
 	currently.map(span => span.innerHTML = d.currently[`${span.dataset.currently}`]);
-	
+	mainIcon.className = d.currently.icon;
+
 	d.hourly.data.forEach((el,i) => hourlyContent.push(`
 	<li class="hourly-${i}"> 
         <span data-hourly="temperature">${el.temperature}</span> 
         <span data-hourly="precipProbability">${el.precipProbability}</span>
-        <span data-hourly="${el.icon}"></span>
+        <i class="${el.icon}"></i>
         <span data-hourly="time">${el.time}</span>
     </li>`));	
 
@@ -58,7 +74,7 @@ function visualizeForecasts(d){
         <span data-daily="temperatureMax">${el.temperatureMax}</span> 
         <span data-daily="temperatureMin">${el.temperatureMin}</span>
         <span data-daily="precipProbability">${el.precipProbability}</span>
-        <span data-daily="${el.icon}"></span>
+        <i class="${el.icon}"></i>
         <span data-daily="time">${el.time}</span>
     </li>`));
 
@@ -84,6 +100,12 @@ const options = {
 		maximumAge: 0
 };
 
+
+const currently = [...document.querySelectorAll("span[data-currently]")];
+const mainIcon = document.querySelector("i.icon");
+const location = document.querySelector("h1.location");
+const hourly = document.querySelector("ul.hourly");
+const daily = document.querySelector("ul.daily");
 navigator.geolocation.getCurrentPosition(getForecasts, error, options);
 
 
