@@ -7,7 +7,7 @@
     <meta name="author" content="Jacopo Parvizi" />
     <meta name="description" content="Local Weather App" />
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <title>Weather App</title>
   </head>
@@ -21,94 +21,50 @@
           </div>
           <div class="currently-text">
             <h2><span data-currently="time"></span></h2>
-            <h3><span data-currently="summary"></span></h3>
+            <h2><span data-currently="summary"></span></h2>
+            <div class="clock">
+              <div class="clock-face">
+                <div class="hand hour-hand"></div>
+                <div class="hand min-hand"></div>
+                <div class="hand second-hand"></div>
+              </div>
+            </div>
           </div>
           <nav>
             <ul class="links">
               <li><a href="#" class="today" >TODAY</a></li>
               <li><a href="#" class="this-week">THIS WEEK</a></li>
-              <li><a href="#" class="c-f">C/F</a></li>
+              <li><a href="#" class="c-f"><i class="wi wi-celsius"></i><i class="wi wi-fahrenheit temp-active"></i></a></li>
             </ul>
           </nav>  
         </div>
         <div class="data">
           <div class="currently">
+            <div class="loader">
+              <div class="circle"></div>
+            </div>
             <div class="currently-data">
-              <span data-currently="temperature">32</span>
-              <i class="wi wi-day-sunny"></i>
+              <span data-currently="temperature"></span>
+              <i class="icon wi wi-cloudy"></i>
 <!--               <span data-currently="precipProbability">0.3</span>
               <span data-currently="humidity">0.8</span>   -->
             </div>
-            <div>
+            <div class="now">
               <strong>NOW</strong>
             </div>
           </div>
-          <div class="forecast">
-            <ul class="hourly">
-              <!-- from 1-24 -->
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
-              <li class="hourly-weather-1">
-                <span data-hourly="temperature">32</span>
-                <span data-hourly="precipProbability">0.8</span>
-                <i class="wi wi-day-sunny"></i>
-                <span data-hourly="time">Hour</span>
-              </li>
 
+          <div class="forecast">
+            <ul class="daily">
+              <!-- from 1-7 -->
+            </ul>
+            <ul class="hourly">
+              <!-- from 1-12 -->
             </ul>
             <div class="loader">
               <div class="circle"></div>
             </div>
-            <ul class="daily">
-              <!-- from 1-7 -->
-              <li class="daily-1"> 
-                <span data-daily="temperatureMax">32</span> 
-                <span data-daily="temperatureMin">24</span>
-                <span data-daily="precipProbability">0.8</span>
-                <i class="icon">icon</i>
-                <span data-daily="time">Day</span>
-              </li>
-            </ul>
+            
           </div>
         </div>
       </div>
