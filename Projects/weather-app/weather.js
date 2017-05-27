@@ -114,7 +114,7 @@ function change(){
 		tempsHourly.map(el => el.innerHTML = Math.round(cToF(parseFloat(el.innerHTML)))+"&#176;");
 	}
 
-};
+}
 
 function showForecast(){
 	if (this.className === "today"){
@@ -134,14 +134,14 @@ function getForecasts(position) {
 	const where = [];
 
 	// calling google maps API for name city
-	
+	const googleKey = 'AIzaSyD5R9TCg3drhO8d4zied5tIRliequPQ3n8';
 	const googleMaps = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}`;
 	fetch(googleMaps)
 		.then(response => response.json())
 		.then(data => where.push(data));
 
 	// calling dark-sky API using Fetch
-	
+	const key = '9d393aee39bebd1b5aa183ce65fbb7ae';
 	const darkSky = `https://crossorigin.me/https://api.darksky.net/forecast/${key}/${latitude},${longitude}?data=auto`;
 	fetch(darkSky)
 		.then(response => response.json())

@@ -242,7 +242,7 @@ nav{
 .hour-hand{
   width:30%;
   height:7px;
-  transform-origin: 1.9rem 0.2rem 0;
+  transform-origin: 1.9rem -0.4rem 0;
 }
 
 .second-hand{
