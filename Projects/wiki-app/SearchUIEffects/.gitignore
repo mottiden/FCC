@@ -1,7 +1,0 @@
-*.DS_Store
-node_modules/**
-SearchUIEffects/**
-gulpfile.js
-package.json
-install-all-gulp.sh
-
