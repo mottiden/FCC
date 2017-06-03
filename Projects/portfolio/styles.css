@@ -1,0 +1,470 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+    font-family: "morrissey-irregular";
+    src: url(newmoz.ttf) format("truetype");
+}
+main{
+  display: flex;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+section h1{
+  font-size: 1.7em;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  font-family: 'Lato', sans-serif;
+}
+li{
+  font-family: "morrissey-irregular";
+  font-size: 1em;
+  color: black;
+  line-height: 1.96em;
+}
+.strike{
+  text-decoration: line-through;
+}
+.space{
+  height: 20vh;
+  width: 100%;
+}
+/*.wave-r {
+  opacity: 0.1;
+  position: fixed;
+  top: -60%;
+  right: 100%;
+  background: #0af;
+  width: 300vh;
+  height: 300vh;
+  transform-origin: 50% 45%;
+  border-radius: 43%;
+  animation: drift 6000ms infinite linear;
+}*/
+.wave-l {
+  opacity: 0.1;
+  position: fixed;
+  top: -60%;
+  left: 100%;
+  background: #0af;
+  width: 200vh;
+  height: 200vh;
+  transform-origin: 50% 45%;
+  border-radius: 43%;
+  animation: drift 6000ms infinite linear;
+}
+.three {
+  animation: drift 10000ms infinite linear;
+}
+.two {
+  animation: drift 14000ms infinite linear;
+  opacity: .1;
+}
+/*Intro---------------------------------------*/
+div.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section.intro{
+  display: flex;
+  flex-direction: column;
+}
+section.intro h1 {
+  font-size: 2em;
+  text-align: left;
+}
+nav.navigation{
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+nav.navigation ul{
+  display: flex;
+  list-style: none;
+  transform: rotate(-2deg);
+}
+nav.navigation li{
+  margin-bottom: 10vh;
+  padding: 0.3em;
+  font-size: 0.6em;
+}
+nav.navigation a{
+  text-decoration: none;
+  color: black;
+}
+nav.navigation a:hover{
+    color: #00AEFF;
+}
+
+/* Effect Brackets */
+.brackets a::before,
+.brackets a::after {
+	display: inline-block;
+	opacity: 0;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+.brackets a::before {
+	margin-right: 0.5em;
+	content: '[';
+	transform: translateX(0.5em);
+}
+
+.brackets a::after {
+	margin-left: 0.5em;
+	content: ']';
+	transform: translateX(-0.5em);
+}
+
+.brackets a:hover::before,
+.brackets a:hover::after,
+.brackets a:focus::before,
+.brackets a:focus::after {
+	opacity: 1;
+	transform: translateX(0em);
+}
+
+
+/*Circle Effect*/
+div.container-circ{
+  display: block;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
+.circle, .circle1, .circle2{
+  display:block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11em;
+  height: 11em;
+  background: #00AEFF;
+  animation: 15s linear infinite wobble;
+  opacity: 1;
+}
+div.circle{
+  border-radius: 95% 95% 85% 90%;
+  transform-origin: 56%;
+}
+div.circle1{
+  border-radius: 90% 95% 85% 95%;
+  transform-origin: 50%;
+}
+div.circle2{
+  border-radius: 90% 95% 85% 90%;
+  transform-origin: 53%;
+}
+.circle-drop{
+  display:block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1.5em;
+  background: #00AEFF;
+  animation: 5s linear infinite drop;
+  border-radius: 90% 95% 80% 95%;
+  opacity: 0;
+}
+
+/*About---------------------------------------*/
+div.about-container{
+  display: flex;
+  flex-direction: column;
+}
+section.about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section.about ul{
+  display: block;
+  list-style: none;
+  margin: 0 auto;
+  transform: rotate(-5deg);
+}
+section.about li{
+  padding: 0.1em;
+  font-size: 1em;
+}
+
+section.about img{
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0px 40px 40px -25px rgba(0,0,0,0.6);
+  max-width: 70%;
+  width: 40%;
+  height: auto;
+  margin: 10% auto;
+  transition: all 0.3s ease-in-out;
+}
+.about img:hover{
+  transform: translateY(-5px);
+  box-shadow: 0px 40px 37px -20px rgba(0,0,0,0.6);
+}
+
+
+
+
+/*Stack---------------------------------------*/
+section.my-stack ul{
+  list-style: none;
+  transform: rotate(5deg);
+  margin-top: 5vh;
+}
+section.my-stack li{
+  padding: 0em;
+  font-size: 1em;
+}
+
+
+
+
+
+
+/*Projectcs---------------------------------------*/
+/* Grid */
+section.projects h1{
+  text-align: center;
+}
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+	perspective: 1000px;
+	perspective-origin: 50% 100%;
+}
+.grid__item {
+	position: relative;
+	display: block;
+	flex: none;
+  width: 45%;
+  height: 45%;
+	margin: 1em 0.5em;
+	cursor: pointer;
+	transform-style: preserve-3d;
+}
+.stack {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+}
+.stack__deco {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #00FEFF;
+  transition: all 0.5s ease-out;
+}
+.stack__figure {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+  width: 100%;
+  height: 100%;
+	transform-origin: 50% 100%;
+  transition: all 0.3s ease-out;
+}
+.stack__img {
+	position: relative;
+	display: block;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-out;
+}
+.stack:hover .stack__deco:nth-child(1){
+  transform: rotate(-10deg);
+  background-color: #00DEFF;
+  opacity: 0.8;
+}
+.stack:hover .stack__deco:nth-child(2){
+  transform: rotate(-20deg);
+  background-color: #00BEFF;
+  opacity: 0.8;
+}
+.stack:hover .stack__deco:nth-child(3){
+  transform: rotate(-30deg);
+  background-color: #00AEFF;
+  opacity: 0.8;
+}
+.stack__figure:hover{
+  transform: translateY(-7px);
+}
+
+
+
+
+
+/*Get in Touch------------------------------*/
+section.get-in-touch h1{
+  margin-bottom: 10vh;
+  text-align: center;
+}
+.grid-icons{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.get-in-touch a{
+  text-align: center;
+}
+section.get-in-touch  img{
+  height: 40%;
+  width: 40%;
+  transition: 0.3s all ease-in-out;
+}
+section.get-in-touch  img:hover{
+  transform: translateY(-4px);
+  transform: scale(1.2);
+
+}
+
+
+
+
+/*Footer--------------------------------*/
+footer{
+  margin: auto;
+  width: 100%;
+}
+.w1 {
+  animation: 8s linear infinite move-forever;
+}
+.w2 {
+  animation: 6s linear infinite move-forever;
+}
+.w3{
+  animation: 4s linear infinite move-forever;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 1000vh;
+  font-family: 'Lato',sans-serif;
+  background: #00aeff; /* Old browsers */
+  background: -moz-linear-gradient(top, #00aeff 0%, #542fa3 62%, #542fa3 62%, #3301a0 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #00aeff 0%,#542fa3 62%,#542fa3 62%,#3301a0 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #00aeff 0%,#542fa3 62%,#542fa3 62%,#3301a0 100%);
+  padding: 1em;
+  color: #eee;
+  font-size: 0.5em;
+  font-weight: 300;
+  margin-top: -5%;
+}
+.box-center{
+  margin: auto;
+  align-self: flex-start;
+}
+.headphones, .turn-off-lights{
+  text-align: center;
+  font-size: 2em;
+}
+.quote-1{
+  display: flex;
+  flex-wrap: wrap;
+  height: 40vh;
+  width: 60vw;
+  margin-bottom: 100vh;
+  background: url(5.jpg) center no-repeat;
+}
+.quote-1 p{
+    font-size: 1.6em;
+    line-height: 2em;
+    position: relative;
+    right: -25vw;
+}
+.quote-1 span{
+  background-color: purple;
+}
+.quote-2{
+  display: flex;
+  flex-wrap: wrap;
+  height: 40vh;
+  width: 60vw;
+  background: url(5.jpg) center no-repeat;
+}
+.quote-2 p{
+    font-size: 1.6em;
+    line-height: 2em;
+    position: relative;
+    bottom: -30vh;
+    right: -25vw;
+}
+.quote-2 span{
+  background-color: blue;
+}
+.videos{
+  display: flex;
+  align-self: center;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  overflow: hidden;
+}
+
+
+/*prevent many large-by-comparison ripples by shrinking the height*/
+/*@media (max-width:50em){
+  .content h1{font-size: 12vmax}
+  .editorial{height:17vw;}
+}*/
+
+
+
+@media only screen and (min-width:500px) and (max-width:950px){
+  .grid__item {
+    width: 25%;
+    height: 25%;
+  }
+}
+
+@media only screen and (min-width:951px){
+  .grid__item {
+    width: 20%;
+    height: 20%;
+  }
+}
+
+/*Animations*/
+@keyframes drop{
+  0%{transform: translateY(0px);opacity:0.8;}
+  5%{transform: translateY(100px);opacity: 0.2}
+  40%{opacity: 0;}
+  80%{opacity: 1;}
+  95%{opacity: 0.1;}
+  100%{transform: translateY(3000px);}
+}
+@keyframes move-forever{
+  0%{transform: translate(-90px , 0%)}
+  100%{transform: translate(85px , 0%)}
+}
+@keyframes wobble{
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
+}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
