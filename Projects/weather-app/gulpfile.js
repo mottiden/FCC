@@ -15,8 +15,9 @@ gulp.task('clean',function(){
 });
 
 gulp.task('styles',function(){
-	gulp.src('styles.css')
+	return gulp.src('styles.css')
 		.pipe(autoprefixer())
+        .pipe(cleanCSS())
 		.pipe(gulp.dest('build'))
 		.pipe(browserSync.reload({stream: true}))
 });
@@ -31,7 +32,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('js', function(j) {
-	pump([
+	return pump([
     	gulp.src('*.js'),
         babel({presets: ['es2015']}),
 	    uglify(),
@@ -47,20 +48,8 @@ gulp.task('useref', function(){
 });
 
 
-gulp.task('mincss', function(){
-  return gulp.src('*.css')
-    .pipe(cleanCSS())
-    // pass in options to the stream
-    .pipe(rename({
-      basename: 'styles',
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('build'));
-});
-
-
-gulp.task('watch',['browserSync','mincss','js','useref'],function(){
-	gulp.watch('styles.css',['styles','mincss']); //in the array you have the tasks you want to run when the file is saved
+gulp.task('watch',['browserSync','styles','js','useref'],function(){
+	gulp.watch('styles.css',['styles']); //in the array you have the tasks you want to run when the file is saved
 	gulp.watch('*.html',browserSync.reload);
 	gulp.watch('*.js',browserSync.reload);
 });
